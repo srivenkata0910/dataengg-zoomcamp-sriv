@@ -69,6 +69,23 @@ having(sum(total_amount))>13000
 select * from top_locns where top_pick<=3
 
 
+Question 6. Largest tip
+
+with tips as(
+select first_value(dropoff_zone."Zone") over(order by tip_amount desc),
+tip_amount
+from green_taxi_data join zone as pickup_zone
+on green_taxi_data."PULocationID"=pickup_zone."LocationID"
+join zone as dropoff_zone
+on green_taxi_data."DOLocationID"=dropoff_zone."LocationID"
+where EXTRACT(MONTH FROM lpep_pickup_datetime)=10
+and EXTRACT(year FROM lpep_pickup_datetime)=2019
+and pickup_zone."Zone"='East Harlem North'
+)
+
+select *
+from tips
+
 
 
 
