@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: clone of a postgres application database
+    database: dbt-tutorial  
+    schema: jaffle_shop
+    freshness: # make this a little more strict
+          warn_after: {count: 48, period: hour}
+          error_after: {count: 48, period: hour}
+    loaded_at_field: _etl_loaded_at
+    tables:
+      - name: orders
+        description: raw orders data
+      - name: customers
+        description: raw customer data
+        columns:
+          - name: id
+            description: primary key for customers data
+        freshness: null
