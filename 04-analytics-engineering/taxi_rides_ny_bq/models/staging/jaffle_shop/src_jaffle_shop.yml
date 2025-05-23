@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: jaffle_shop
     description: clone of a postgres application database
-    database: dbt-tutorial  
+    database: raw  
     schema: jaffle_shop
     freshness: # make this a little more strict
           warn_after: {count: 48, period: hour}
