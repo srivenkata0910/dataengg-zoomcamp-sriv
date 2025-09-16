@@ -40,6 +40,7 @@ models:
       materialized: table
     staging:
       materialized: view
+      +required_tests: {"unique.*|not_null": 2}
 
 vars:
   payment_type_values: [1, 2, 3, 4]
