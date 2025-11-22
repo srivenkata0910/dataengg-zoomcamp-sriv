@@ -5,4 +5,10 @@ macros:
     - name: column_name
       type: string
       description: the column that you want to convert
-
+- name: grant_select
+  description: a macro that grants select privs on target.schema and role unless otherwise specified
+  arguments:
+      - name: schema
+        description: schema we want to grant privs on
+      - name: role
+        description: role we want to grant privs to
